@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "afp"
+version = "0.1.1"
+description = "Another Fastx Parser — tiny, dependency-free FASTA/FASTQ reader with transparent gzip/bzip2/zip/zstd decompression."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Darrin T. Schultz", email = "darrin.schultz@univie.ac.at" },
+]
+keywords = ["fasta", "fastq", "sequence", "parser", "bioinformatics"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+# No required runtime dependencies. zstandard is an optional extra used only
+# when reading .zst-compressed input.
+
+[project.optional-dependencies]
+zstd = ["zstandard>=0.18"]
+dev = [
+  "pytest>=7",
+  "pytest-cov",
+  "zstandard>=0.18",
+]
+
+[project.urls]
+Homepage = "https://github.com/conchoecia/afp"
+"Source code" = "https://github.com/conchoecia/afp"
+"odp" = "https://github.com/conchoecia/odp"
+
+[tool.setuptools]
+py-modules = ["afp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
