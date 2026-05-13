@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 # PyPI distribution name. Import name stays `afp` (set via py-modules below)
 # because `afp` was already taken on PyPI by an unrelated project.
 name = "run-afp"
-version = "0.1.1"
+version = "0.1.2"
 description = "Another Fastx Parser — tiny, dependency-free FASTA/FASTQ reader with transparent gzip/bzip2/zip/zstd decompression."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -57,7 +57,7 @@ addopts = "-v --tb=short"
 #   bump-my-version bump major          # 0.x.y -> 1.0.0
 # Commits the change and creates tag vX.Y.Z. Push with `git push --follow-tags`.
 [tool.bumpversion]
-current_version = "0.1.1"
+current_version = "0.1.2"
 parse = '(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)'
 serialize = ["{major}.{minor}.{patch}"]
 commit = true
