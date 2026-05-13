@@ -8,8 +8,6 @@
 
 [![Wheel](https://img.shields.io/pypi/wheel/run-afp.svg)](https://pypi.org/project/run-afp/)
 [![Format](https://img.shields.io/pypi/format/run-afp.svg)](https://pypi.org/project/run-afp/#files)
-[![PyPI downloads/month](https://img.shields.io/pypi/dm/run-afp.svg)](https://pypistats.org/packages/run-afp)
-[![Total downloads](https://static.pepy.tech/badge/run-afp)](https://pepy.tech/project/run-afp)
 
 [![Bioconda](https://img.shields.io/conda/vn/bioconda/afp.svg?label=bioconda)](https://anaconda.org/bioconda/afp)
 [![Bioconda downloads](https://img.shields.io/conda/dn/bioconda/afp.svg?label=bioconda%20downloads)](https://anaconda.org/bioconda/afp)
@@ -17,7 +15,7 @@
 
 [![Last commit](https://img.shields.io/github/last-commit/conchoecia/afp.svg)](https://github.com/conchoecia/afp/commits/main)
 [![Open issues](https://img.shields.io/github/issues/conchoecia/afp.svg)](https://github.com/conchoecia/afp/issues)
-[![DOI](https://zenodo.org/badge/1237361183.svg)](https://zenodo.org/badge/latestdoi/1237361183)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20153268.svg)](https://doi.org/10.5281/zenodo.20153268)
 
 A tiny, dependency-free Python reader/writer for **FASTA** and **FASTQ** files
 with transparent `gzip` / `bzip2` / `zip` / `zstandard` decompression. Standard
