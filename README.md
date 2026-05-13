@@ -1,6 +1,10 @@
 # afp — Another Fastx Parser
 
 [![CI](https://github.com/conchoecia/afp/actions/workflows/ci.yml/badge.svg)](https://github.com/conchoecia/afp/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/conchoecia/afp/branch/main/graph/badge.svg)](https://codecov.io/gh/conchoecia/afp)
+[![PyPI](https://img.shields.io/pypi/v/run-afp.svg)](https://pypi.org/project/run-afp/)
+[![Python versions](https://img.shields.io/pypi/pyversions/run-afp.svg)](https://pypi.org/project/run-afp/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A tiny, dependency-free Python reader/writer for **FASTA** and **FASTQ** files
 with transparent `gzip` / `bzip2` / `zip` / `zstandard` decompression. Standard
