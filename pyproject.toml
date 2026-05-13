@@ -3,7 +3,9 @@ requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "afp"
+# PyPI distribution name. Import name stays `afp` (set via py-modules below)
+# because `afp` was already taken on PyPI by an unrelated project.
+name = "run-afp"
 version = "0.1.1"
 description = "Another Fastx Parser — tiny, dependency-free FASTA/FASTQ reader with transparent gzip/bzip2/zip/zstd decompression."
 readme = "README.md"

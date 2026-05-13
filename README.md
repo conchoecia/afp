@@ -22,10 +22,13 @@ curl -O https://raw.githubusercontent.com/conchoecia/afp/main/afp.py
 **Or pip-install:**
 
 ```sh
-pip install afp                   # core, no extras
-pip install "afp[zstd]"           # also read .zst-compressed files
-pip install "afp[dev]"            # pytest + zstandard for development
+pip install run-afp               # core, no extras
+pip install "run-afp[zstd]"       # also read .zst-compressed files
+pip install "run-afp[dev]"        # pytest + zstandard for development
 ```
+
+The PyPI distribution is `run-afp` (the bare `afp` name was already taken).
+The import name stays `import afp`.
 
 **Or vendor inside another repo:** copy `afp.py` into your `dependencies/`
 directory, add that directory to `sys.path`, then `import afp`.
