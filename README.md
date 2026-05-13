@@ -15,7 +15,7 @@
 
 [![Last commit](https://img.shields.io/github/last-commit/conchoecia/afp.svg)](https://github.com/conchoecia/afp/commits/main)
 [![Open issues](https://img.shields.io/github/issues/conchoecia/afp.svg)](https://github.com/conchoecia/afp/issues)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20153268.svg)](https://doi.org/10.5281/zenodo.20153268)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20153268-blue.svg)](https://doi.org/10.5281/zenodo.20153268)
 
 A tiny, dependency-free Python reader/writer for **FASTA** and **FASTQ** files
 with transparent `gzip` / `bzip2` / `zip` / `zstandard` decompression. Standard
