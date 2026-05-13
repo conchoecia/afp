@@ -34,6 +34,7 @@ dev = [
   "pytest>=7",
   "pytest-cov",
   "zstandard>=0.18",
+  "bump-my-version",
 ]
 
 [project.urls]
@@ -47,3 +48,28 @@ py-modules = ["afp"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v --tb=short"
+
+# bump-my-version keeps version strings in lockstep across files. Usage:
+#   bump-my-version bump patch          # 0.1.1 -> 0.1.2
+#   bump-my-version bump minor          # 0.1.x -> 0.2.0
+#   bump-my-version bump major          # 0.x.y -> 1.0.0
+# Commits the change and creates tag vX.Y.Z. Push with `git push --follow-tags`.
+[tool.bumpversion]
+current_version = "0.1.1"
+parse = '(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)'
+serialize = ["{major}.{minor}.{patch}"]
+commit = true
+tag = true
+tag_name = "v{new_version}"
+message = "Bump version: {current_version} → {new_version}"
+allow_dirty = false
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search  = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "afp.py"
+search  = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'

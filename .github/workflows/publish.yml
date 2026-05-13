@@ -1,0 +1,55 @@
+name: Publish to PyPI
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  # Sanity re-run the test matrix on the tagged commit. Smaller than the PR
+  # matrix in ci.yml because this is just a final guard before upload.
+  test:
+    name: test / ${{ matrix.os }} / py${{ matrix.python-version }}
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - {os: ubuntu-latest, python-version: "3.9"}
+          - {os: ubuntu-latest, python-version: "3.10"}
+          - {os: ubuntu-latest, python-version: "3.11"}
+          - {os: ubuntu-latest, python-version: "3.12"}
+          - {os: macos-latest,  python-version: "3.12"}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: python -m compileall -q afp.py
+      - run: pytest tests/
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    # `environment: pypi` gates publishing behind the `pypi` GitHub
+    # environment, which is configured (one-time, in the GitHub UI) to only
+    # accept tag refs matching v*. Combined with PyPI's trusted-publisher
+    # registration (Owner conchoecia, Repo afp, Workflow publish.yml,
+    # Environment pypi), only a tagged release running this exact workflow
+    # can mint the short-lived OIDC token PyPI requires for upload. No
+    # long-lived API token is stored anywhere.
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install build twine
+      - run: python -m build
+      - run: python -m twine check dist/*
+      - uses: pypa/gh-action-pypi-publish@release/v1

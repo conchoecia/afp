@@ -197,12 +197,17 @@ def get_open_func(path: PathLike) -> Callable:
 
 
 def _split_header(line: str):
-    """Split a header line (without its leading '>' or '@') into (id, desc)."""
+    """Split a header line (without its leading '>' or '@') into (id, desc).
+
+    Splits on the first run of any whitespace, so headers separated by a
+    tab, a space, or both work the same way."""
     line = line.rstrip("\r\n")
-    head, sep, tail = line.partition(" ")
-    if not sep:
-        head, sep, tail = line.partition("\t")
-    return head, (tail if sep else None)
+    parts = line.split(None, 1)
+    if not parts:
+        return "", None
+    if len(parts) == 1:
+        return parts[0], None
+    return parts[0], parts[1]
 
 
 def parse_fasta(path: PathLike) -> Iterator[Record]:
@@ -215,7 +220,7 @@ def parse_fasta(path: PathLike) -> Iterator[Record]:
         seq_parts: list[str] = []
         for raw in fh:
             line = raw.rstrip("\r\n")
-            if not line:
+            if not line.strip():
                 continue
             if line.startswith(">"):
                 if rec_id is not None:
